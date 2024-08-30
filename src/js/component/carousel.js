@@ -1,4 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import Card from "./card";
+import "../../styles/carousel.css";
 
 const imagecharacters = {
     1: "https://starwars-visualguide.com/assets/img/characters/1.jpg",

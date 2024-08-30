@@ -1,18 +1,28 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Card = ({character, imageUrl, type}) => {
     const { store, actions } = useContext(Context);
     const uniqueId = `${type}-${character.uid}`;
     const isFavorite = store.favorites.some(fav => fav.uniqueId === uniqueId);
 
+    // const handleFavorite = () => {
+    //     if (isFavorite) {
+    //         actions.removeFavorite(uniqueId);
+    //     } else {
+    //         actions.addFavorite({...character, type});
+    //     }
+    // };
+
     const handleFavorite = () => {
         if (isFavorite) {
             actions.removeFavorite(uniqueId);
         } else {
-            actions.addFavorite({...character, type});
+            actions.addFavorite({ ...character, type: character.type });
         }
     };
+    
 
     return (
         <div className="card">
