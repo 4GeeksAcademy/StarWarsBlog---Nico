@@ -7,19 +7,11 @@ const Card = ({character, imageUrl, type}) => {
     const uniqueId = `${type}-${character.uid}`;
     const isFavorite = store.favorites.some(fav => fav.uniqueId === uniqueId);
 
-    // const handleFavorite = () => {
-    //     if (isFavorite) {
-    //         actions.removeFavorite(uniqueId);
-    //     } else {
-    //         actions.addFavorite({...character, type});
-    //     }
-    // };
-
     const handleFavorite = () => {
         if (isFavorite) {
             actions.removeFavorite(uniqueId);
         } else {
-            actions.addFavorite({ ...character, type: character.type });
+            actions.addFavorite({ ...character, uniqueId, type});
         }
     };
     
